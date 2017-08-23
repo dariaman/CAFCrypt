@@ -34,4 +34,11 @@ public class EncryptController {
         return JSONObject.quote(ChiperText);
     }
     
+    @RequestMapping(value = "/ReadPostCCJson", method=RequestMethod.POST,produces = "application/json")
+    @ResponseBody
+    public String EncryptPostString() throws Exception
+    {
+        return JSONObject.quote("");
+    }
+    
 }

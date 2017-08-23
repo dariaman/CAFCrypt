@@ -21,9 +21,9 @@ import org.apache.commons.codec.binary.Hex;
  * @author dariaman.siagian
  */
 public class TripleDES {
-    private String KEY1 = "Kunci1";
-    private String KEY2 = "Kunci2";
-    private String KEY3 = "Kunci3";
+    private String KEY1;
+    private String KEY2;
+    private String KEY3;
     
     public TripleDES(){
         ReadFileText ListKunci=new ReadFileText("C:\\tmp\\KEY.txt");
