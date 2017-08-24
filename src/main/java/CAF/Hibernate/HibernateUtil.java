@@ -16,21 +16,21 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
  * @author DJ
  */
 public class HibernateUtil {
+
     private static final SessionFactory sessionFactory;
 
     static {
-            try {
-            StandardServiceRegistry standardRegistry = 
-            new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
-            Metadata metaData = 
-            new MetadataSources(standardRegistry).getMetadataBuilder().build();
-                    sessionFactory = metaData.getSessionFactoryBuilder().build();
-            } catch (Throwable th) {
-                    System.err.println("Enitial SessionFactory creation failed" + th);
-                    throw new ExceptionInInitializerError(th);
-            }
+        try {
+            StandardServiceRegistry sR = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+            Metadata metaData = new MetadataSources(sR).getMetadataBuilder().build();
+            sessionFactory = metaData.getSessionFactoryBuilder().build();
+        } catch (Throwable th) {
+            System.err.println("Enitial SessionFactory creation failed" + th);
+            throw new ExceptionInInitializerError(th);
+        }
     }
+
     public static SessionFactory getSessionFactory() {
-            return sessionFactory;
+        return sessionFactory;
     }
 }
