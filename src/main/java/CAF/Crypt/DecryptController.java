@@ -34,7 +34,7 @@ public class DecryptController {
             String PlainText = new TripleDES().decrypt3DES(CipherText);
             return JSONObject.quote(PlainText);
         }catch(BadPaddingException bpe){
-            return JSONObject.quote("Wrong Key");
+            return JSONObject.quote("Cipher and Key not match");
         }
     }
 }
