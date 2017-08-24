@@ -1,6 +1,0 @@
-CAF\FileText\ReadFileText.class
-CAF\Config\WebInitializer.class
-CAF\Crypt\EncryptController.class
-CAF\Crypt\DecryptController.class
-CAF\Crypt\TripleDES.class
-CAF\Config\WebConfig.class
