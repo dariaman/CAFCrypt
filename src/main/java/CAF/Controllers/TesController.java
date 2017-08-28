@@ -5,10 +5,8 @@
  */
 package CAF.Controllers;
 
-import CAF.Models.Dao.PolicyDaoImpl;
 import CAF.Models.PolicyModel;
 import com.google.gson.Gson;
-import java.util.List;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,11 +35,7 @@ public class TesController {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         PolicyService polis = context.getBean(PolicyService.class);
         List<PolicyModel> persons = polis.listPolicy();
-
-//        List<PolicyModel> lst;
-//        lst= polisDao.getListUser();
         String gson = new Gson().toJson(persons);
-//        return gson;
         return gson;
     }
 

@@ -14,7 +14,5 @@ import java.util.List;
  */
 public interface PolicyDao {
     public List<PolicyModel> getListPolicy();    
-//    public void saveOrUpdate(PolicyModel PolicyM);
-//    public void deleteUser(int id);
-//    public PolicyModel findUserById(int id);    
+    public int findPolicyIDByPolicyNo(String PolicyNo);    
 }
