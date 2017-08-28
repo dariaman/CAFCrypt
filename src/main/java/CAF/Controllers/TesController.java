@@ -10,7 +10,10 @@ import CAF.Models.Dao.PolicyDao;
 import CAF.Models.Dao.PolicyDaoImpl;
 import CAF.Models.PolicyModel;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.scheduling.annotation.Async;
@@ -26,23 +29,13 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class TesController {
+    @PersistenceContext
+   private EntityManager em;
     
     @ResponseBody
     @Async
     @RequestMapping(value = "/t1", method = RequestMethod.GET, produces = "application/json")
     public List<PolicyModel> asfdString() throws Exception {
-//        SessionFactory sessFact = HibernateUtil.getSessionFactory();
-//        Session session = sessFact.getCurrentSession();
-//        org.hibernate.Transaction tr = session.beginTransaction();
-//
-//        CriteriaQuery cq = session.getCriteriaBuilder().createQuery(PolicyModel.class);
-//        cq.from(PolicyModel.class);
-//        List PolisList = session.createQuery(cq).getResultList();
-//
-//        tr.commit();
-////	sessFact.close();
-
-List<PolicyModel> lst = PolicyDao.getListUser();
 
         return null;
     }
