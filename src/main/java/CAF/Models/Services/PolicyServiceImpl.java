@@ -17,6 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author dariaman.siagian
  */
+//@Service("PolicyService")
+@Service
 public class PolicyServiceImpl implements PolicyService {
 
     @Autowired

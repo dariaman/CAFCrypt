@@ -19,6 +19,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author dariaman.siagian
  */
+@Repository
 public class PolicyDaoImpl implements PolicyDao {
 
     @PersistenceContext

@@ -29,21 +29,23 @@ import CAF.Models.Services.PolicyService;
  */
 @RestController
 public class TesController {
-    
+
     @ResponseBody
     @Async
     @RequestMapping(value = "/t1", method = RequestMethod.GET, produces = "application/json")
     public String asfdString() throws Exception {
-//        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        PolicyService polis = context.getBean(PolicyService.class);
+        List<PolicyModel> persons = polis.listPolicy();
 
 //        List<PolicyModel> lst;
 //        lst= polisDao.getListUser();
-        String gson = new Gson().toJson("Dariaman");
+        String gson = new Gson().toJson(persons);
 //        return gson;
         return gson;
     }
 
-    @RequestMapping(value = "/a",method = RequestMethod.POST,produces = "application/json")
+    @RequestMapping(value = "/a", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     public String someMethod(@RequestBody String valueOne) {
         return valueOne;

@@ -7,11 +7,13 @@ package CAF.Models.Services;
 
 import CAF.Models.PolicyModel;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author dariaman.siagian
  */
+
 public interface PolicyService {
     List<PolicyModel> listPolicy();
 }
