@@ -6,6 +6,7 @@
 package CAF.Controllers;
 
 import CAF.Crypt.TripleDES;
+import com.google.gson.Gson;
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +25,8 @@ public class EncryptController {
     @ResponseBody
     public String TestString() throws Exception
     {
-        return "dariaman";
+        String gson = new Gson().toJson("Dariaman");
+        return gson;
     }
     
     @RequestMapping(value = "/Encrypt/{PlainText}", method=RequestMethod.GET,produces = "application/json")

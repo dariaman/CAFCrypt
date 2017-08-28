@@ -5,12 +5,15 @@
  */
 package CAF.Models.Dao;
 
-import CAF.Hibernate.HibernateUtil;
 import CAF.Models.PolicyModel;
 import java.util.List;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
+import org.springframework.stereotype.Repository;
 
 /**
  *
@@ -18,34 +21,21 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class PolicyDaoImpl implements PolicyDao {
 
-    @Autowired
-    private SessionFactory sessionFactory;
-
-    protected Session getSession() {
-        return sessionFactory.getCurrentSession();
-    }
+    @PersistenceContext
+    private EntityManager em;
 
     @Override
-    public List<PolicyModel> getListUser() {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-    session.beginTransaction();
-    
-    List<PolicyModel> result = (List<PolicyModel>) session.createNativeQuery("SELECT * FROM `policy`").getSingleResult();
-    
-    session.getTransaction().commit();
-    session.close();
-//        SessionFactory sess = HibernateUtil.getSessionFactory();
-//        Session session;
-//        session = HibernateUtil.getSessionFactory().openSession();
-//        Criteria crit = session.createCriteria(PolicyModel.class);
-//        crit.setMaxResults(50);
-//        List cats = crit.list();
-        return result;
+    public List<PolicyModel> getListPolicy() {
+        CriteriaQuery<PolicyModel> criteriaQuery = em.getCriteriaBuilder().createQuery(PolicyModel.class);
+        @SuppressWarnings("unused")
+        Root<PolicyModel> root = criteriaQuery.from(PolicyModel.class);
+        return em.createQuery(criteriaQuery).getResultList();
+
     }
 
-    @Override
-    public PolicyModel findUserById(int id) {
-        return (PolicyModel) getSession().get(PolicyModel.class, id);
-    }
+//    @Override
+//    public PolicyModel findUserById(int id) {
+//        return null;
+//    }
 
 }
