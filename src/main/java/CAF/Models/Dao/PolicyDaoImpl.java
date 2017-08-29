@@ -10,7 +10,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
@@ -37,13 +37,29 @@ public class PolicyDaoImpl implements PolicyDao {
 
     @Override
     public int findPolicyIDByPolicyNo(String PolicyNo) {
-        String sql = "SELECT p FROM policy p WHERE c.policy_no = :policyno";
-        TypedQuery<PolicyModel> query = em.createQuery("", PolicyModel.class);
+        PolicyModel polis ;
+        Query q = em.createNativeQuery("SELECT * FROM policy p WHERE p.policy_no = :policyno",PolicyModel.class);
+        q.setParameter("policyno", PolicyNo);
+        polis = (PolicyModel) q.getSingleResult();
         
-//        CriteriaQuery<PolicyModel> criteriaQuery = em.getCriteriaBuilder().createQuery(PolicyModel.class);
-//        @SuppressWarnings("unused")
-//        Root<PolicyModel> root = criteriaQuery.from(PolicyModel.class);
-//        List<PolicyModel> polis=em.createQuery(criteriaQuery).setMaxResults(10).getResultList();
-        return 0;
+        return polis.getPolicyID();
+    }
+
+    @Override
+    public PolicyModel findPolicyByPolicyNo(String PolicyNo) {
+        PolicyModel polis ;
+        Query q = em.createNativeQuery("SELECT * FROM policy p WHERE p.policy_no = :policyno",PolicyModel.class);
+        q.setParameter("policyno", PolicyNo);
+        polis = (PolicyModel) q.getSingleResult();
+        return polis;
+    }
+
+    @Override
+    public PolicyModel findPolicyByPolicyID(int PolicyID) {
+        PolicyModel polis ;
+        Query q = em.createNativeQuery("SELECT * FROM policy p WHERE p.policy_id = :PolicyID",PolicyModel.class);
+        q.setParameter("PolicyID", PolicyID);
+        polis = (PolicyModel) q.getSingleResult();
+        return polis;
     }
 }

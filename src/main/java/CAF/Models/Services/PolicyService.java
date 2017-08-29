@@ -7,7 +7,6 @@ package CAF.Models.Services;
 
 import CAF.Models.PolicyModel;
 import java.util.List;
-import org.springframework.stereotype.Service;
 
 /**
  *
@@ -16,4 +15,7 @@ import org.springframework.stereotype.Service;
 
 public interface PolicyService {
     List<PolicyModel> listPolicy();
+    public int findPolicyIDByPolicyNo(String PolicyNo);
+    public PolicyModel findPolicyByPolicyNo(String PolicyNo);
+    public PolicyModel findPolicyByPolicyID(int PolicyID);
 }

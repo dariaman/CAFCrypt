@@ -14,5 +14,7 @@ import java.util.List;
  */
 public interface PolicyDao {
     public List<PolicyModel> getListPolicy();    
-    public int findPolicyIDByPolicyNo(String PolicyNo);    
+    public int findPolicyIDByPolicyNo(String PolicyNo);
+    public PolicyModel findPolicyByPolicyNo(String PolicyNo);
+    public PolicyModel findPolicyByPolicyID(int PolicyID);
 }

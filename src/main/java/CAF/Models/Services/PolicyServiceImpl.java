@@ -29,4 +29,19 @@ public class PolicyServiceImpl implements PolicyService {
         return Polis.getListPolicy();
     }
 
+    @Override
+    public int findPolicyIDByPolicyNo(String PolicyNo) {
+        return Polis.findPolicyIDByPolicyNo(PolicyNo);
+    }
+
+    @Override
+    public PolicyModel findPolicyByPolicyNo(String PolicyNo) {
+        return Polis.findPolicyByPolicyNo(PolicyNo);
+    }
+
+    @Override
+    public PolicyModel findPolicyByPolicyID(int PolicyID) {
+        return Polis.findPolicyByPolicyID(PolicyID);
+    }
+
 }

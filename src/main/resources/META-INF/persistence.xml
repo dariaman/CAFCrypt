@@ -9,8 +9,10 @@
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.30.18:3306/prod_life21"/>
             <property name="javax.persistence.jdbc.user" value="dariaman"/>
-      
             <property name="javax.persistence.jdbc.password" value="P@ssw0rd"/>
+            
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
         </properties>
     </persistence-unit>

@@ -5,13 +5,18 @@
  */
 package CAF.Controllers;
 
+import CAF.Config.AppConfig;
+import CAF.Models.Services.PolicyService;
 import com.google.gson.Gson;
+import javax.servlet.http.HttpServletRequest;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.WebRequest;
 
 /**
  *
@@ -19,14 +24,30 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class PolicyController {
-    
+
     @ResponseBody
     @Async
     @RequestMapping(value = "/GetPolicyIDByPolicyNo/{PolicyNo}", method = RequestMethod.GET, produces = "application/json")
-    public String GetPolicyByID(@PathVariable("PolicyNo") String PolicyNo){
+    public String GetPolicyByID(@PathVariable("PolicyNo") String PolicyNo) {
         String polisno = PolicyNo.replaceAll("[^0-9]", "");
-        
+
         return new Gson().toJson(polisno);
     }
-    
+
+    @ResponseBody
+    @Async
+    @RequestMapping(value = "/update_polis_by_polisno_json", 
+            method = RequestMethod.POST,
+            headers = "Content-Type=application/x-www-form-urlencoded")
+    public String UpdatePolisByPolisNo(HttpServletRequest request) {
+        System.out.println(new Gson().toJson(request));
+
+//        String polis_no = PolicyNo.replaceAll("[^0-9]", "");
+//        
+//        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+//        PolicyService polisServ = context.getBean(PolicyService.class);
+//        String gson = new Gson().toJson(polisServ.findPolicyByPolicyNo(polis_no));
+        return "1";
+    }
+
 }

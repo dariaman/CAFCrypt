@@ -32,6 +32,10 @@ public class PolicyModel implements Serializable{
     @Column(name = "policy_payment_method")
     private String PaymentMethod;
 
+    public void setPolicyNo(String PolicyNo) {
+        this.PolicyNo = PolicyNo;
+    }
+
     public int getPolicyID() {
         return PolicyID;
     }
