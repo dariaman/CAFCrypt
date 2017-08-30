@@ -18,11 +18,13 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import CAF.Config.AppConfig;
 import CAF.ErrorHandling.BadRequestException;
 import CAF.Models.Services.PolicyService;
+import CAF.ViewModels.PolicyUpdateCCVM;
 import java.io.IOException;
 import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -84,8 +86,8 @@ public class TesController {
 
     @RequestMapping(value = "/a", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
-    public String someMethod(@RequestBody String valueOne) {
-        return valueOne;
+    public ResponseEntity<String> someMethod(@RequestBody PolicyUpdateCCVM polis) {
+        return new ResponseEntity<String>("dariaman 123", HttpStatus.BAD_GATEWAY);
         //do stuff with valueOne variable here
     }
 
